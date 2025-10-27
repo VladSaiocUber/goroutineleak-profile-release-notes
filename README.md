@@ -31,8 +31,9 @@ func (s *Server[T, R]) AggregateResults(reqs []T) ([]R, error) {
 ```
 Channel `ch` is used to synchronize when concurrently processing each request in the slice `reqs`.
 The response are aggregated in a slice if all requests succeed.
-Conversely, a request producing an error shortcircuits the evluation of `AggregateResults` for the parent goroutine.
-However, because `ch` is unbuffured, all pending request goroutines beyond the first to produce
+Conversely, if any request produces an error, `AggregateResults` is shortcircuited to
+return the error.
+However, because `ch` is unbuffered, all pending request goroutines beyond the first to produce
 the error will leak.
 
 The key insight is that `ch` is inaccessible outside the scope of `AggregateResults`.
