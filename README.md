@@ -54,7 +54,7 @@ The leaked goroutines' stack precisely pinpoints the leaking operation in the so
 
 The main advantage of goroutine leak profiles is that they have **no false positives**, but, for theoretical reasons, they may nevertheless
 miss some goroutine leaks, e.g., when caused by global channels.
-The underlying approach is presented in detail in [this publication by Saioc et al.](https://dl.acm.org/doi/pdf/10.1145/3676641.3715990).
+The underlying theory is presented in detail in [this publication by Saioc et al.](https://dl.acm.org/doi/pdf/10.1145/3676641.3715990).
 
-More details are presented in the [design document](https://github.com/golang/proposal/blob/master/design/74609-goroutine-leak-detection-gc.md).
+More details about the implementation are presented in the [design document](https://github.com/golang/proposal/blob/master/design/74609-goroutine-leak-detection-gc.md).
 We encourage users to experiment with the new feature in different environments (tests, CI, production), and welcome feedback on the [proposal issue](https://github.com/golang/go/issues/74609).
