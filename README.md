@@ -30,7 +30,7 @@ func (s *Server[T, R]) AggregateResults(reqs []T) ([]R, error) {
 }
 ```
 Channel `ch` is used to synchronize when concurrently processing each request in the slice `reqs`.
-The response are aggregated in a slice if all requests succeed.
+The responses are aggregated in a slice if all requests succeed.
 Conversely, if any request produces an error, `AggregateResults` is shortcircuited to
 return the error.
 However, because `ch` is unbuffered, all pending request goroutines beyond the first to produce
